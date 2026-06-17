@@ -1,4 +1,4 @@
-const CACHE = 'milk-calc-v4';
+const CACHE = 'milk-calc-v6';
 const ASSETS = [
   '/',
   '/index.html',

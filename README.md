@@ -2,7 +2,9 @@
 
 A lightweight Progressive Web App (PWA) for tracking daily milk deliveries and generating monthly bills — built for Indian households and dairy vendors.
 
-![Milk Price Calculator](farmer-calculating-the-milk-price.png)
+![Milk Price Calculator Home](resources/images/milk-price-calculator-dashboard.jpg)
+
+![Milk Price Calculator Bill](resources/images/bill-screensot.png)
 
 ## Features
 
@@ -58,8 +60,8 @@ milk-calculator/
 ├── style.css           # Custom styles (Bootstrap overrides)
 ├── sw.js               # Service worker for offline support
 ├── manifest.json       # PWA manifest
-├── appstore-images/    # Icons for Android & iOS
-└── *.jpg / *.png       # Hero images
+├── resources/             # Screenshots and hero images
+└── appstore-images/    # Icons for Android & iOS
 ```
 
 ## Contributing
