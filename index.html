@@ -76,18 +76,28 @@
   </div>
 
   <!-- ═══ NAVBAR ══════════════════════════════════════════════════════════════ -->
-  <nav class="sticky-top no-print py-3" style="background: var(--dark);">
-    <div class="container-lg d-flex align-items-center justify-content-between">
-      <span class="text-white fw-black fs-4 d-flex align-items-center gap-2">
+  <nav class="sticky-top no-print py-2" style="background: var(--dark);">
+    <div class="container-lg d-flex align-items-center gap-2">
+      <span class="text-white fw-black d-flex align-items-center gap-2 me-auto"
+        style="font-size:clamp(1rem,4vw,1.35rem);white-space:nowrap;">
         <span>🥛</span>
         <span>{{ t.appTitle }}</span>
       </span>
 
-      <div class="dropdown">
-        <button class="btn btn-sm btn-accent rounded-pill px-3 fw-bold d-flex align-items-center gap-2"
+      <button
+        class="btn btn-sm btn-outline-light rounded d-flex align-items-center justify-content-center flex-shrink-0"
+        style="width:36px;height:36px;padding:0;" ng-if="canShare" ng-click="shareApp()" title="Share App">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+          <path
+            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
+        </svg>
+      </button>
+
+      <div class="dropdown flex-shrink-0">
+        <button class="btn btn-sm btn-accent rounded-pill px-2 px-sm-3 fw-bold d-flex align-items-center gap-1"
           data-bs-toggle="dropdown" aria-expanded="false">
           <span>{{ currentLang().flag }}</span>
-          <span>{{ currentLang().label }}</span>
+          <span class="d-none d-sm-inline">{{ currentLang().label }}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
             <path
               d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -271,11 +281,6 @@
             <div class="d-flex flex-wrap gap-3">
               <div>
                 <div class="text-white-50 fw-semibold"
-                  style="font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;">{{ t.date }}</div>
-                <div class="text-white fw-bold small">{{ printDateRange() }}</div>
-              </div>
-              <div>
-                <div class="text-white-50 fw-semibold"
                   style="font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;">{{ t.pricePerLitre }}</div>
                 <div class="text-white fw-bold small">₹{{ form.price }}{{ t.perLitre }}</div>
               </div>
@@ -283,6 +288,11 @@
                 <div class="text-white-50 fw-semibold"
                   style="font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;">{{ t.defaultMilk }}</div>
                 <div class="text-white fw-bold small">{{ form.defaultMilk }} {{ t.litres }}</div>
+              </div>
+              <div>
+                <div class="text-white-50 fw-semibold"
+                  style="font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;">{{ t.date }}</div>
+                <div class="text-white fw-bold small">{{ printDateRange() }}</div>
               </div>
             </div>
           </div>
@@ -365,17 +375,17 @@
       <!-- Action buttons -->
       <div class="row no-print d-flex">
         <div class="col-md-4">
-          <button class="btn btn-outline-secondary rounded-pill  fw-bold" ng-click="reset()">
+          <button class="w-100 m-1 btn btn-outline-secondary rounded-pill  fw-bold" ng-click="reset()">
             {{ t.reset }}
           </button>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-outline-dark rounded-pill fw-bold " ng-click="saveImage()">
+          <button class="w-100 m-1 btn btn-outline-dark rounded-pill fw-bold " ng-click="saveImage()">
             🖼 {{ t.saveImage }}
           </button>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-accent rounded-pill fw-black flex-grow-1 py-2 fs-5" ng-click="printPage()">
+          <button class="w-100 m-1 btn btn-accent rounded-pill fw-black flex-grow-1 py-2 fs-5" ng-click="printPage()">
             🖨 {{ t.print }}
           </button>
         </div>
@@ -395,7 +405,11 @@
             <div class="modal-footer border-0 pt-0 justify-content-center gap-2">
               <button id="receiptShare" class="btn btn-accent rounded-pill fw-black px-4" ng-click="shareImage()"
                 ng-show="canShare">
-                📤 {{ t.shareImage }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"
+                  class="me-1">
+                  <path
+                    d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
+                </svg>{{ t.shareImage }}
               </button>
               <a id="receiptDownload" download="milk-bill.png" class="btn btn-outline-dark rounded-pill fw-bold px-4">
                 ⬇ {{ t.downloadImage }}

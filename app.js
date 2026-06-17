@@ -29,6 +29,15 @@ angular.module('milkCalc', [])
     $scope.errors = {};
     $scope.canShare = !!(navigator.canShare && navigator.share);
 
+    $scope.shareApp = function () {
+      if (!navigator.share) return;
+      navigator.share({
+        title: 'Milk Price Calculator',
+        text: 'Calculate milk prices easily with this free app!',
+        url: window.location.href
+      });
+    };
+
     var STORAGE_KEY = 'milkCalcForm';
 
     function loadSavedForm() {
