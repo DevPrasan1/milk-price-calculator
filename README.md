@@ -54,14 +54,26 @@ Then open `http://localhost:8080` in your browser.
 
 ```
 milk-calculator/
-├── index.html          # Single-page app shell
-├── app.js              # AngularJS controller & logic
-├── language.js         # English / Hindi / Haryanvi translations
-├── style.css           # Custom styles (Bootstrap overrides)
-├── sw.js               # Service worker for offline support
-├── manifest.json       # PWA manifest
-├── resources/             # Screenshots and hero images
-└── appstore-images/    # Icons for Android & iOS
+├── index.html                          # Single-page app shell
+├── resources/
+│   ├── images/
+│   │   ├── farmer-calculating-the-milk-price.jpg   # OG / hero image
+│   │   ├── farmer-calculating-the-milk-price.png
+│   │   ├── milk-price-calculator-dashboard.jpg     # App screenshot
+│   │   └── bill-screensot.png                      # Bill screenshot
+│   ├── styles/
+│   │   └── style.css                   # Custom CSS (Bootstrap overrides)
+│   └── scripts/
+│       ├── app.js                      # AngularJS controller & logic
+│       ├── language.js                 # English / Hindi / Haryanvi translations
+│       └── sw.js                       # Service worker for offline support
+├── pwa/
+│   ├── manifest.json                   # PWA manifest
+│   └── appstore-images/
+│       ├── android/                    # Android launcher icons
+│       └── ios/                        # iOS touch icons
+├── README.md
+└── .gitignore
 ```
 
 ## Contributing
