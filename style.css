@@ -9,6 +9,7 @@
   justify-content: center;
   transition: opacity .4s ease, visibility .4s ease;
 }
+
 #splash.hidden {
   opacity: 0;
   visibility: hidden;
@@ -26,11 +27,17 @@
 .splash-bottle {
   font-size: 3.5rem;
   animation: bottleBounce 1s ease-in-out infinite alternate;
-  filter: drop-shadow(0 8px 24px rgba(245,197,50,.35));
+  filter: drop-shadow(0 8px 24px rgba(245, 197, 50, .35));
 }
+
 @keyframes bottleBounce {
-  from { transform: translateY(0) rotate(-4deg); }
-  to   { transform: translateY(-10px) rotate(4deg); }
+  from {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  to {
+    transform: translateY(-10px) rotate(4deg);
+  }
 }
 
 /* Drops fall from bottle */
@@ -41,6 +48,7 @@
   align-items: flex-start;
   justify-content: center;
 }
+
 .splash-drop {
   width: 6px;
   height: 10px;
@@ -49,26 +57,54 @@
   opacity: 0;
   animation: dropFall .9s ease-in infinite;
 }
-.splash-drop:nth-child(1) { animation-delay: 0s; }
-.splash-drop:nth-child(2) { animation-delay: .3s; }
-.splash-drop:nth-child(3) { animation-delay: .6s; }
+
+.splash-drop:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.splash-drop:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.splash-drop:nth-child(3) {
+  animation-delay: .6s;
+}
+
 @keyframes dropFall {
-  0%   { opacity: 1; transform: translateY(0); }
-  80%  { opacity: .4; }
-  100% { opacity: 0; transform: translateY(22px); }
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
 }
 
 /* Milk pool ripples at the bottom */
 .splash-pool {
   width: 64px;
   height: 10px;
-  background: rgba(255,255,255,.15);
+  background: rgba(255, 255, 255, .15);
   border-radius: 50%;
   animation: poolPulse 1s ease-in-out infinite alternate;
 }
+
 @keyframes poolPulse {
-  from { transform: scaleX(.8); opacity: .5; }
-  to   { transform: scaleX(1.1); opacity: 1; }
+  from {
+    transform: scaleX(.8);
+    opacity: .5;
+  }
+
+  to {
+    transform: scaleX(1.1);
+    opacity: 1;
+  }
 }
 
 .splash-label {
@@ -85,6 +121,7 @@
   display: flex;
   gap: 6px;
 }
+
 .splash-dots span {
   width: 7px;
   height: 7px;
@@ -92,32 +129,88 @@
   background: #F5C532;
   animation: dotBounce .7s ease-in-out infinite alternate;
 }
-.splash-dots span:nth-child(2) { animation-delay: .2s; }
-.splash-dots span:nth-child(3) { animation-delay: .4s; }
+
+.splash-dots span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.splash-dots span:nth-child(3) {
+  animation-delay: .4s;
+}
+
 @keyframes dotBounce {
-  from { transform: translateY(0);   opacity: .5; }
-  to   { transform: translateY(-6px); opacity: 1; }
+  from {
+    transform: translateY(0);
+    opacity: .5;
+  }
+
+  to {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
 
 /* Only rules Bootstrap cannot express */
-:root { --accent: #F5C532; --dark: #1A1A1A; --bg: #EEEAE2; }
+:root {
+  --accent: #F5C532;
+  --dark: #1A1A1A;
+  --bg: #EEEAE2;
+}
 
-body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', sans-serif; }
+body {
+  background: var(--bg);
+  font-family: 'Nunito', 'Noto Sans Devanagari', sans-serif;
+}
 
 /* Accent button */
-.btn-accent { background: var(--accent); border-color: var(--accent); color: var(--dark); font-weight: 800; }
-.btn-accent:hover, .btn-accent:focus { background: #E8B820; border-color: #E8B820; color: var(--dark); }
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--dark);
+  font-weight: 800;
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
+  background: #E8B820;
+  border-color: #E8B820;
+  color: var(--dark);
+}
 
 /* Bill list */
-.bill-list { }
-.bill-row { border-bottom: 1px solid rgba(0,0,0,.06); transition: background .15s; }
-.bill-row:last-child { border-bottom: none; }
-.bill-row.row-more { background: #DCFCE7; }
-.bill-row.row-less  { background: #FEE2E2; }
+.bill-list {}
 
-.bill-date { width: 42px; }
-.bill-date-num { font-size: 1.35rem; color: var(--dark); }
-.bill-date-mon { font-size: .62rem; letter-spacing: .06em; color: #888; }
+.bill-row {
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+  transition: background .15s;
+}
+
+.bill-row:last-child {
+  border-bottom: none;
+}
+
+.bill-row.row-more {
+  background: #DCFCE7;
+}
+
+.bill-row.row-less {
+  background: #FEE2E2;
+}
+
+.bill-date {
+  width: 42px;
+}
+
+.bill-date-num {
+  font-size: 1.35rem;
+  color: var(--dark);
+}
+
+.bill-date-mon {
+  font-size: .62rem;
+  letter-spacing: .06em;
+  color: #888;
+}
 
 .bill-milk-input {
   width: 68px;
@@ -131,7 +224,11 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   outline: none;
   text-align: center;
 }
-.bill-milk-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(245,197,50,.25); }
+
+.bill-milk-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 197, 50, .25);
+}
 
 .bill-remark-input {
   display: block;
@@ -145,12 +242,21 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   padding: 0;
   margin-top: 2px;
 }
-.bill-remark-input::placeholder { color: #bbb; }
 
-.bill-amount { font-size: 1rem; color: var(--dark); min-width: 56px; }
+.bill-remark-input::placeholder {
+  color: #bbb;
+}
+
+.bill-amount {
+  font-size: 1rem;
+  color: var(--dark);
+  min-width: 56px;
+}
 
 /* Print-only elements hidden on screen */
-.print-only { display: none !important; }
+.print-only {
+  display: none !important;
+}
 
 /* ── A4 Invoice Receipt (screen: hidden, print: shown) ────────────────── */
 .receipt {
@@ -178,8 +284,18 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   padding: 28px 32px;
   margin-bottom: 28px;
 }
-.inv-brand { display: flex; align-items: center; gap: 16px; }
-.inv-logo  { font-size: 3rem; line-height: 1; }
+
+.inv-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inv-logo {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .inv-title {
   font-size: 22px;
   font-weight: 900;
@@ -187,24 +303,40 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   text-transform: uppercase;
   color: #F5C532;
 }
+
 .inv-subtitle {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .18em;
-  color: rgba(255,255,255,.55);
+  color: rgba(255, 255, 255, .55);
   text-transform: uppercase;
 }
-.inv-meta-right { text-align: right; }
+
+.inv-meta-right {
+  text-align: right;
+}
+
 .inv-period-label {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .12em;
-  color: rgba(255,255,255,.45);
+  color: rgba(255, 255, 255, .45);
   text-transform: uppercase;
   margin-bottom: 2px;
 }
-.inv-period { font-size: 15px; font-weight: 800; color: #fff; }
-.inv-rate   { font-size: 12px; font-weight: 600; color: #F5C532; margin-top: 4px; }
+
+.inv-period {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.inv-rate {
+  font-size: 12px;
+  font-weight: 600;
+  color: #F5C532;
+  margin-top: 4px;
+}
 
 /* Bill To + Summary */
 .inv-bill-section {
@@ -214,7 +346,11 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   margin-bottom: 24px;
   gap: 24px;
 }
-.inv-bill-to { flex: 1; }
+
+.inv-bill-to {
+  flex: 1;
+}
+
 .inv-section-label {
   font-size: 10px;
   font-weight: 800;
@@ -223,12 +359,14 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   text-transform: uppercase;
   margin-bottom: 4px;
 }
+
 .inv-buyer {
   font-size: 20px;
   font-weight: 900;
   color: #0F172A;
   letter-spacing: -.01em;
 }
+
 .inv-summary-box {
   display: flex;
   gap: 0;
@@ -236,12 +374,17 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   border-radius: 10px;
   overflow: hidden;
 }
+
 .inv-summary-item {
   padding: 10px 20px;
   text-align: center;
   border-right: 1.5px solid #E2E8F0;
 }
-.inv-summary-item:last-child { border-right: none; }
+
+.inv-summary-item:last-child {
+  border-right: none;
+}
+
 .inv-summary-label {
   font-size: 9px;
   font-weight: 800;
@@ -249,6 +392,7 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   color: #94A3B8;
   text-transform: uppercase;
 }
+
 .inv-summary-val {
   font-size: 15px;
   font-weight: 900;
@@ -264,6 +408,7 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   border: 1.5px solid #E2E8F0;
   margin-bottom: 20px;
 }
+
 .inv-th {
   display: flex;
   background: #1E293B;
@@ -274,6 +419,7 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   text-transform: uppercase;
   padding: 10px 16px;
 }
+
 .inv-tr {
   display: flex;
   align-items: center;
@@ -283,17 +429,63 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   font-weight: 600;
   color: #1E293B;
 }
-.inv-tr:last-child { border-bottom: none; }
-.inv-tr:nth-child(even) { background: #F8FAFC; }
-.inv-tr.inv-tr-more { background: #DCFCE7 !important; color: #14532D; }
-.inv-tr.inv-tr-less { background: #FEE2E2 !important; color: #7F1D1D; }
 
-.inv-col-no     { width: 32px;  flex-shrink: 0; font-weight: 700; color: #94A3B8; font-size: 11px; }
-.inv-col-date   { width: 80px;  flex-shrink: 0; }
-.inv-col-day    { width: 72px;  flex-shrink: 0; }
-.inv-col-remark { flex: 1; color: #64748B; font-style: italic; font-size: 11.5px; }
-.inv-col-qty    { width: 60px;  flex-shrink: 0; text-align: right; font-weight: 800; }
-.inv-col-amt    { width: 80px;  flex-shrink: 0; text-align: right; font-weight: 800; }
+.inv-tr:last-child {
+  border-bottom: none;
+}
+
+.inv-tr:nth-child(even) {
+  background: #F8FAFC;
+}
+
+.inv-tr.inv-tr-more {
+  background: #DCFCE7 !important;
+  color: #14532D;
+}
+
+.inv-tr.inv-tr-less {
+  background: #FEE2E2 !important;
+  color: #7F1D1D;
+}
+
+.inv-col-no {
+  width: 32px;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: #94A3B8;
+  font-size: 11px;
+}
+
+.inv-col-date {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.inv-col-day {
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.inv-col-remark {
+  flex: 1;
+  color: #64748B;
+  font-style: italic;
+  font-size: 11.5px;
+}
+
+.inv-col-qty {
+  width: 60px;
+  flex-shrink: 0;
+  text-align: right;
+  font-weight: 800;
+}
+
+.inv-col-amt {
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+  font-weight: 800;
+}
 
 /* Totals */
 .inv-totals {
@@ -304,6 +496,7 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   overflow: hidden;
   margin-bottom: 32px;
 }
+
 .inv-total-row {
   display: flex;
   justify-content: space-between;
@@ -313,6 +506,7 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   color: #334155;
   border-bottom: 1px solid #E2E8F0;
 }
+
 .inv-grand-total {
   display: flex;
   justify-content: space-between;
@@ -324,7 +518,10 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
   font-weight: 900;
   letter-spacing: -.01em;
 }
-.inv-grand-total span:last-child { color: #F5C532; }
+
+.inv-grand-total span:last-child {
+  color: #F5C532;
+}
 
 /* Footer */
 .inv-footer {
@@ -339,12 +536,52 @@ body { background: var(--bg); font-family: 'Nunito', 'Noto Sans Devanagari', san
 }
 
 @media print {
-  .no-print    { display: none !important; }
-  .print-only  { display: block !important; }
-  body         { background: #fff !important; margin: 0; }
-  .bill-list, .bill-date, .bill-milk-input, .bill-remark-input { display: none !important; }
-  .card        { display: none !important; }
-  .receipt     { display: block !important; padding: 0; width: 100%; }
-  .inv-header, .inv-th, .inv-grand-total, .inv-tr-more, .inv-tr-less { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  @page { margin: 1cm; size: A4 portrait; }
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: #fff !important;
+    margin: 0;
+  }
+
+  .bill-list,
+  .bill-date,
+  .bill-milk-input,
+  .bill-remark-input {
+    display: none !important;
+  }
+
+  .card {
+    display: none !important;
+  }
+
+  .receipt {
+    display: block !important;
+    padding: 0;
+    width: 100%;
+  }
+
+  .inv-header,
+  .inv-th,
+  .inv-grand-total,
+  .inv-tr-more,
+  .inv-tr-less {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    margin: 1cm;
+    size: A4 portrait;
+  }
+}
+
+#calc-form .form-control {
+  color: #2196f3 !important;
+  font-weight: 600 !important;
 }

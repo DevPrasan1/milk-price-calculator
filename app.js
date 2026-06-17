@@ -45,8 +45,8 @@ angular.module('milkCalc', [])
       try {
         var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
         if (saved) {
-          if (saved.startDate) saved.startDate = parseLocalDate(saved.startDate);
-          if (saved.endDate) saved.endDate = parseLocalDate(saved.endDate);
+          if (saved.startDate) saved.startDate = parseLocalDate(String(saved.startDate).slice(0, 10));
+          if (saved.endDate) saved.endDate = parseLocalDate(String(saved.endDate).slice(0, 10));
           return saved;
         }
       } catch (e) { }
@@ -127,7 +127,16 @@ angular.module('milkCalc', [])
 
       $scope.rows = rows;
       $scope.phase = 'table';
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.form)); } catch (e) { }
+      try {
+        var toSave = {
+          startDate: fileDate($scope.form.startDate),
+          endDate: fileDate($scope.form.endDate),
+          price: $scope.form.price,
+          defaultMilk: $scope.form.defaultMilk,
+          buyerName: $scope.form.buyerName
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      } catch (e) { }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -174,7 +183,8 @@ angular.module('milkCalc', [])
 
     function fileDate(d) {
       if (!d) return '';
-      var date = (d instanceof Date) ? d : new Date(d);
+      if (typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+      var date = (d instanceof Date) ? d : parseLocalDate(d);
       var y = date.getFullYear();
       var m = String(date.getMonth() + 1).padStart(2, '0');
       var day = String(date.getDate()).padStart(2, '0');
