@@ -10,7 +10,7 @@ A lightweight Progressive Web App (PWA) for tracking daily milk deliveries and g
 - **Per-day editing** — tap any row to adjust milk quantity or add a remark
 - **Print / PDF** — generates a clean receipt layout for printing or saving
 - **Save & share image** — export the bill as a PNG via the Web Share API
-- **Bilingual** — full support for English and Hindi (हिंदी)
+- **Multilingual** — full support for English, Hindi (हिंदी), and Haryanvi (हरियाणवी); language choice is remembered across sessions
 - **PWA** — installable on Android and iOS home screens, works offline
 
 ## Tech Stack
@@ -54,7 +54,7 @@ Then open `http://localhost:8080` in your browser.
 milk-calculator/
 ├── index.html          # Single-page app shell
 ├── app.js              # AngularJS controller & logic
-├── language.js         # English / Hindi translations
+├── language.js         # English / Hindi / Haryanvi translations
 ├── style.css           # Custom styles (Bootstrap overrides)
 ├── sw.js               # Service worker for offline support
 ├── manifest.json       # PWA manifest

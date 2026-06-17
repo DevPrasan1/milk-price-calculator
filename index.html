@@ -133,8 +133,7 @@
             {{ t.bannerBadge }}
           </span>
 
-          <h1 class="fw-black mb-3"
-            style="font-size:clamp(2.2rem,5vw,3.25rem);letter-spacing:-0.03em;line-height:1.05;">
+          <h1 class="fw-black mb-3" style="font-size:clamp(2.2rem,5vw,3.25rem);letter-spacing:-0.03em;line-height:1.2;">
             {{ t.bannerHeadline1 }}<br>
             <span style="color:var(--accent);">{{ t.bannerHeadlineAccent }}</span> {{ t.bannerHeadline2 }}
           </h1>
@@ -163,7 +162,7 @@
               <path
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg>
-            Add to Home Screen
+            {{t.addToHome}}
           </button>
         </div>
 
@@ -364,12 +363,12 @@
           </div>
         </div>
       </div>
-      <div class="d-flex gap-2 ms-auto">
+      <!-- <div class="d-flex gap-2 ms-auto">
         <span class="badge rounded-pill fw-semibold px-3 py-2" style="background:#DCFCE7;color:#166534;">● {{
           t.legendExtra }}</span>
         <span class="badge rounded-pill fw-semibold px-3 py-2" style="background:#FEE2E2;color:#991B1B;">● {{
           t.legendLess }}</span>
-      </div>
+      </div> -->
       <hr class="no-print" />
       <!-- Action buttons -->
       <div class="row no-print d-flex">
@@ -380,7 +379,11 @@
         </div>
         <div class="col-md-4">
           <button class="w-100 m-1 btn btn-outline-dark rounded-pill fw-bold " ng-click="saveImage()">
-            🖼 {{ t.saveImage }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
+            </svg>
+            {{ t.saveImage }}
           </button>
         </div>
         <div class="col-md-4">

@@ -584,4 +584,5 @@ body {
 #calc-form .form-control {
   color: #2196f3 !important;
   font-weight: 600 !important;
+  text-align: left !important;
 }

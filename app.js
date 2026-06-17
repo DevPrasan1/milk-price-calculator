@@ -23,8 +23,9 @@ angular.module('milkCalc', [])
     }
 
     // ── State ────────────────────────────────────────────────────────────────
-    $scope.lang = 'en';
-    $scope.t = TRANSLATIONS['en'];
+    var _savedLang = localStorage.getItem('milkCalcLang');
+    $scope.lang = (TRANSLATIONS[_savedLang] ? _savedLang : 'en');
+    $scope.t = TRANSLATIONS[$scope.lang];
     $scope.phase = 'form';
     $scope.errors = {};
     $scope.canShare = !!(navigator.canShare && navigator.share);
@@ -61,12 +62,14 @@ angular.module('milkCalc', [])
     // ── Language ─────────────────────────────────────────────────────────────
     $scope.langs = [
       { code: 'en', label: 'English', flag: '🇬🇧' },
-      { code: 'hi', label: 'हिंदी', flag: '🇮🇳' }
+      { code: 'hi', label: 'हिंदी', flag: '🇮🇳' },
+      { code: 'hr', label: 'हरियाणवी', flag: '🌾' }
     ];
 
     $scope.setLang = function (code) {
       $scope.lang = code;
       $scope.t = TRANSLATIONS[code];
+      try { localStorage.setItem('milkCalcLang', code); } catch (e) { }
       $scope.rows.forEach(function (row) {
         row.dayStr = $scope.t.days[row.dateObj.getDay()];
         row.dateStr = formatDate(row.dateObj, $scope.t);
