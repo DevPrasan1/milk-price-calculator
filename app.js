@@ -28,6 +28,7 @@ angular.module('milkCalc', [])
     $scope.phase = 'form';
     $scope.errors = {};
     $scope.canShare = !!(navigator.canShare && navigator.share);
+    $scope.currentYear = function () { return new Date().getFullYear(); };
 
     $scope.shareApp = function () {
       if (!navigator.share) return;
