@@ -419,46 +419,82 @@
         </div>
       </div>
 
-      <!-- ══ RECEIPT (print only) ══════════════════════════════════════════════ -->
+      <!-- ══ RECEIPT / A4 INVOICE (print only) ══════════════════════════════════ -->
       <div class="receipt print-only">
 
-        <!-- Header -->
-        <div class="receipt-header">
-          <div class="receipt-logo">🥛</div>
-          <div class="receipt-shop-name">{{ t.printTitle }}</div>
-          <div class="receipt-meta" ng-if="form.buyerName">{{ t.buyerName }}: <strong>{{ form.buyerName }}</strong>
+        <!-- Invoice Header -->
+        <div class="inv-header">
+          <div class="inv-brand">
+            <div class="inv-logo">🥛</div>
+            <div>
+              <div class="inv-title">{{ t.printTitle }}</div>
+              <div class="inv-subtitle">INVOICE</div>
+            </div>
           </div>
-          <div class="receipt-meta">{{ printDateRange() }}</div>
-          <div class="receipt-meta">{{ t.pricePerLitre }}: ₹{{ form.price }}{{ t.perLitre }}</div>
-          <div class="receipt-divider">- - - - - - - - - - - - - - - - - - - - - - - -</div>
-          <div class="receipt-col-heads">
-            <span>{{ t.date }} / {{ t.day }}</span>
-            <span>{{ t.milk }}</span>
+          <div class="inv-meta-right">
+            <div class="inv-period-label">BILLING PERIOD</div>
+            <div class="inv-period">{{ printDateRange() }}</div>
+            <div class="inv-rate">₹{{ form.price }}{{ t.perLitre }}</div>
           </div>
-          <div class="receipt-divider">- - - - - - - - - - - - - - - - - - - - - - - -</div>
         </div>
 
-        <!-- Rows -->
-        <div ng-repeat="row in rows">
-          <div class="receipt-row">
-            <span class="receipt-row-date">{{ row.dateStr }}, {{ row.dayStr }}</span>
-            <span class="receipt-row-amt">{{ row.milk }} {{ t.litres }}</span>
+        <!-- Bill To -->
+        <div class="inv-bill-section">
+          <div class="inv-bill-to" ng-if="form.buyerName">
+            <div class="inv-section-label">BILL TO</div>
+            <div class="inv-buyer">{{ form.buyerName }}</div>
           </div>
-          <div class="receipt-row-remark" ng-if="row.remark">↳ {{ row.remark }}</div>
+          <div class="inv-summary-box">
+            <div class="inv-summary-item">
+              <div class="inv-summary-label">DEFAULT QTY</div>
+              <div class="inv-summary-val">{{ form.defaultMilk }} {{ t.litres }}</div>
+            </div>
+            <div class="inv-summary-item">
+              <div class="inv-summary-label">RATE</div>
+              <div class="inv-summary-val">₹{{ form.price }}/L</div>
+            </div>
+            <div class="inv-summary-item">
+              <div class="inv-summary-label">DAYS</div>
+              <div class="inv-summary-val">{{ rows.length }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Items Table -->
+        <div class="inv-table">
+          <div class="inv-th">
+            <span class="inv-col-no">#</span>
+            <span class="inv-col-date">{{ t.date }}</span>
+            <span class="inv-col-day">{{ t.day }}</span>
+            <span class="inv-col-remark">Note</span>
+            <span class="inv-col-qty">Qty (L)</span>
+            <span class="inv-col-amt">Amount</span>
+          </div>
+          <div ng-repeat="row in rows" class="inv-tr"
+            ng-class="{'inv-tr-more': rowClass(row)==='row-more', 'inv-tr-less': rowClass(row)==='row-less'">
+            <span class="inv-col-no">{{ row.no }}</span>
+            <span class="inv-col-date">{{ row.dateStr }}</span>
+            <span class="inv-col-day">{{ row.dayStr }}</span>
+            <span class="inv-col-remark">{{ row.remark }}</span>
+            <span class="inv-col-qty">{{ row.milk }}</span>
+            <span class="inv-col-amt">₹{{ (row.milk * form.price) | number:0 }}</span>
+          </div>
+        </div>
+
+        <!-- Totals -->
+        <div class="inv-totals">
+          <div class="inv-total-row">
+            <span>{{ t.totalMilk }}</span>
+            <span>{{ totalMilk() | number:2 }} {{ t.litres }}</span>
+          </div>
+          <div class="inv-grand-total">
+            <span>{{ t.totalAmount }}</span>
+            <span>{{ formatINR(totalAmount()) }}</span>
+          </div>
         </div>
 
         <!-- Footer -->
-        <div class="receipt-divider" style="margin-top:8px;">- - - - - - - - - - - - - - - - - - - - - - - -</div>
-        <div class="receipt-total-row">
-          <span>{{ t.totalMilk }}</span>
-          <span>{{ totalMilk() | number:2 }} {{ t.litres }}</span>
-        </div>
-        <div class="receipt-grand-total">
-          <span>{{ t.totalAmount }}</span>
-          <span>{{ formatINR(totalAmount()) }}</span>
-        </div>
-        <div class="receipt-divider">════════════════════════════════════════</div>
-        <div class="receipt-footer">Thank you! 🙏</div>
+        <div class="inv-footer">Thank you for your business! 🙏</div>
 
       </div><!-- /receipt -->
 
