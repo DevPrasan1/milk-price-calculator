@@ -1,14 +1,15 @@
-const CACHE = 'milk-calc-v1';
+const CACHE = 'milk-calc-v2';
 const ASSETS = [
   '/',
   '/index.html',
-  '/style.css',
-  '/app.js',
-  '/language.js',
-  '/appstore-images/ios/180.png',
-  '/appstore-images/android/launchericon-192x192.png',
-  '/appstore-images/android/launchericon-512x512.png',
-  '/farmer-calculating-the-milk-price.jpg'
+  '/resources/styles/style.css',
+  '/resources/scripts/app.js',
+  '/resources/scripts/language.js',
+  '/pwa/appstore-images/ios/180.png',
+  '/pwa/appstore-images/android/launchericon-192x192.png',
+  '/pwa/appstore-images/android/launchericon-512x512.png',
+  '/resources/images/farmer-calculating-the-milk-price.jpg',
+  '/resources/images/milk-price-calculator-dashboard.jpg'
 ];
 
 self.addEventListener('install', e => {
